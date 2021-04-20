@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1089146504114",
+    "project_id": "temporary-53ed1",
+    "storage_bucket": "temporary-53ed1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089146504114:android:935f7b1f0c5a26d5691aab",
+        "android_client_info": {
+          "package_name": "com.example.CTAMA"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089146504114-q0r961rmvj994btpftul4icgbg0dcfu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqM-ngFa-2L3n_oYp4IkiWcbyKO7hsVis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089146504114-q0r961rmvj994btpftul4icgbg0dcfu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
