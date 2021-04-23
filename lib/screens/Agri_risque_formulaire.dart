@@ -293,10 +293,11 @@ class _PageState extends State<Page> with SingleTickerProviderStateMixin{
                       ans6: answers[5],
                       ans7: answers[6],
                     );
+                    answers = [null,null,null,null,null,null,""];
                       DatabaseService().addRisqueToDb(
                         AuthenticationService().getCurrentUser().uid, risque
                         ).then((value){
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (cntx)=>HomePage()), (route) => false);
+                          Navigator.of(context).push(MaterialPageRoute(builder: (cntx)=>HomePage()),);
                     }
                     );
                    }

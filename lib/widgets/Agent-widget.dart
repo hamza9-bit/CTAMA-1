@@ -1,12 +1,15 @@
 import 'package:CTAMA/backend/database.dart';
+import 'package:CTAMA/screens/AffectationScreen.dart';
 import 'package:CTAMA/screens/Agent/Ag-accounts.dart';
 import 'package:CTAMA/screens/Agent/ag-experts.dart';
 import 'package:CTAMA/screens/Agent/ag-gerer-compte.dart';
 import 'package:CTAMA/screens/Agent/rapports.dart';
+import 'package:CTAMA/screens/SinistreScreen.dart';
 import 'package:CTAMA/screens/ajouter-agence.dart';
 import 'package:CTAMA/screens/login-screen.dart';
 import 'package:CTAMA/screens/Agent/saved_agences_view.dart';
 import 'package:CTAMA/screens/Agri_risque_formulaire.dart';
+import 'package:CTAMA/screens/expert/rapport.dart';
 import 'package:flutter/material.dart';
 
 class Agentpage1 extends StatefulWidget {
@@ -82,7 +85,7 @@ class _Agentpage1State extends State<Agentpage1> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Gerercompte()));
+                    MaterialPageRoute(builder: (context) => SinistreView()));
               },
               child: _buildsinglecontainer(
                 context: context,
@@ -93,7 +96,7 @@ class _Agentpage1State extends State<Agentpage1> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FlightsStepper()));
+                    MaterialPageRoute(builder: (context) => Affectation()));
               },
               child: _buildsinglecontainer(
                 context: context,
@@ -115,7 +118,7 @@ class _Agentpage1State extends State<Agentpage1> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Rapports()));
+                    MaterialPageRoute(builder: (context) => Rapportexpertise()));
               },
               child: _buildsinglecontainer(
                 context: context,

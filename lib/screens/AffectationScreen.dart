@@ -12,6 +12,14 @@ class Affectation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [Colors.orange[900], Colors.orange[200]],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
+        ),
         title: Text("AFFECTATIONS"),
       ),
       body: StreamBuilder(

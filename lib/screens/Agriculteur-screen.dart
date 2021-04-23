@@ -1,11 +1,17 @@
 import 'dart:async';
 
+import 'package:CTAMA/models/user.dart';
+import 'package:CTAMA/screens/sinistre.dart';
 import 'package:flutter/material.dart';
 import 'package:CTAMA/backend/authentication_services.dart';
 import 'package:CTAMA/screens/screens.dart';
 
 class Dashboard extends StatefulWidget {
-  Dashboard({Key key}) : super(key: key);
+
+
+  Dashboard({Key key, this.myuser}) : super(key: key);
+
+final Myuser myuser;
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -41,6 +47,7 @@ class _DashboardState extends State<Dashboard>
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Dashboard"),
@@ -50,7 +57,14 @@ class _DashboardState extends State<Dashboard>
               icon: Icon(Icons.logout))
         ],
       ),
-      body: Center(child: Text("Home")),
+      body: Center(
+        child: TextButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (cntx)=>Sinistre(
+              uid: widget.myuser.id,
+              name: widget.myuser.name,
+            )));
+      }, child: Text("SINISTRE"))),
     );
   }
 }

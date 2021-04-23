@@ -55,6 +55,7 @@ class AuthenticationService {
       .then((value)async{
         if (value!=null){
             final Myuser myuser = Myuser(
+                nbSinisitre: 0,
                 accepted: false,
                 email: value.user.email,
                 name: name,

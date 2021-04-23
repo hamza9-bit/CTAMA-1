@@ -67,16 +67,7 @@ class RapportexpertiseState extends State<Rapportexpertise> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("                 Rapport d'expertise"),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back_ios_outlined),
-            ),
-          ),
-        ],
+        title: Text("    Rapport d'expertise"),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

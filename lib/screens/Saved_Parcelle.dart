@@ -11,8 +11,6 @@ class SavedParcelle extends StatelessWidget {
 
   SavedParcelle({Key key, this.uid}) : super(key: key);
 
-
-
 Future<bool> createDialog(BuildContext context,String id)async{
     
   final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
@@ -64,19 +62,27 @@ final String uid;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [Colors.orange[900], Colors.orange[200]],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
+        ),
         title: Text("SAVED PARCELLES"),
       ),
       body: StreamBuilder(
         stream: databaseService.getSavedParcelles(uid),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData&&snapshot.data!=null) {
             if (snapshot.data.docs.isEmpty) {
               return Center(
                 child: Text("Aucune parcelles ajoutés.",
                     style: TextStyle(fontSize: 23)),
               );
-            }
-            return ListView.builder(
+            }else{
+              return ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (BuildContext context, int index) {
                 final MyPpolygon myPpolygon =
@@ -91,38 +97,41 @@ final String uid;
                         padding: const EdgeInsets.all(10.0),
                         child: ListTile(
                           leading: Text(myPpolygon.reference!=null? "Parcelle n° ${myPpolygon.reference}" : "Parcelle n° $index",style: TextStyle(fontSize: 29)),
-                          trailing: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
+                          trailing: Container(
+                            width: 100,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                              icon: Icon(Icons.delete_forever_rounded),
+                              color: Colors.red,
+                              onPressed: () {},
+                            ),
                               IconButton(
-                            icon: Icon(Icons.delete_forever_rounded),
-                            color: Colors.red,
-                            onPressed: () {},
-                          ),
-                            IconButton(
-                            icon: Icon(Icons.edit_outlined),
-                            color: Colors.green,
-                            onPressed: () async{
-                              createDialog(context,myPpolygon.id).then((value){
-                                 if (value){
+                              icon: Icon(Icons.edit_outlined),
+                              color: Colors.green,
+                              onPressed: () async{
+                                createDialog(context,myPpolygon.id).then((value){
+                                   if (value){
                      toast.Fluttertoast.showToast(
                       msg: "Reference setted Successfully",
-                             timeInSecForIosWeb: 3,
-                             backgroundColor: Colors.green.withOpacity(0.8),
+                               timeInSecForIosWeb: 3,
+                               backgroundColor: Colors.green.withOpacity(0.8),
                       gravity: toast.ToastGravity.TOP
               );
                    }else{
                      toast.Fluttertoast.showToast(
                       msg: "FAIL",
-                             timeInSecForIosWeb: 3,
-                             backgroundColor: Colors.red.withOpacity(0.8),
+                               timeInSecForIosWeb: 3,
+                               backgroundColor: Colors.red.withOpacity(0.8),
                       gravity: toast.ToastGravity.TOP
               );
                    }
-                              });
-                            },
-                          ),
-                            ],
+                                });
+                              },
+                            ),
+                              ],
+                            ),
                           )
                         ),
                       ),
@@ -130,6 +139,7 @@ final String uid;
                     );
               },
             );
+            }
           }
           return Center(
             child: CircularProgressIndicator(),

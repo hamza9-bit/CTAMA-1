@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class Myuser {
 
@@ -10,13 +11,16 @@ class Myuser {
   String pass;
   String imageUrl;
   String id;
+  int nbSinisitre;
 
-  Myuser({this.name, this.email,this.accepted,this.imageUrl,this.pass,this.role,this.id,this.risque=false});
+
+  Myuser({this.name,@required this.nbSinisitre,this.email,this.accepted,this.imageUrl,this.pass,this.role,this.id,this.risque=false});
 
   Map<String, dynamic> toMap(Myuser myuser) {
     
     Map<String, dynamic> map = Map<String, dynamic>();
 
+    map["nbSinistre"] = myuser.nbSinisitre;
     map["name"] = myuser.name;
     map["email"] = myuser.email;
     map["risque"] = myuser.risque;
@@ -32,7 +36,7 @@ class Myuser {
 
   Myuser.fromMap(Map<String, dynamic> map) {
     
-
+    this.nbSinisitre = map["nbSinistre"];
     this.risque= map["risque"];
     this.name = map["name"];
     this.email = map["email"];

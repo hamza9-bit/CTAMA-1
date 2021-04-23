@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 class TextInputField extends StatelessWidget {
+
   const TextInputField({
     Key key,
     @required this.icon,
     @required this.hint,
     this.onSaved,
+    this.initialValue="",
+    this.readonly=false,
     this.inputType,
     this.validator,
     this.inputAction,
   }) : super(key: key);
 
+  final bool readonly;
+  final String initialValue;
   final IconData icon;
   final String hint;
   final TextInputType inputType;
@@ -33,6 +38,8 @@ class TextInputField extends StatelessWidget {
           child: TextFormField(
             onSaved: onSaved,
             validator: validator,
+            readOnly: readonly,
+            initialValue: initialValue,
             decoration: InputDecoration(
               errorStyle: TextStyle(
                   color: Colors.blue[800],
